@@ -81,7 +81,6 @@
             }
 
             function CreateTag(text) {
-
                 var newTag = $('<span />').addClass("label label-primary tag").append($(
                     '<span />').html(text));
                 var removeButton = $(
@@ -90,6 +89,10 @@
                 $(newTag).append(removeButton);
                 $(tagBox).append(newTag);
             }
+
+            $("#tag").on("click","a.js-tag-delete",function(){
+                $(this).parents(".tag").first().remove();
+            })
 
         }
 
