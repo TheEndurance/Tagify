@@ -12,8 +12,9 @@
     <link rel="stylesheet" href="css/font-awesome.css">
     <style>
         .label {
-            display:inline-block !important;
+            display: inline-block !important;
         }
+
         .tag {
             font-size: 14px;
             padding: .3em .4em .4em;
@@ -47,10 +48,10 @@
 </head>
 
 <body>
-        <div id="tag">
-            
-        </div>
-   
+    <div id="tag">
+
+    </div>
+
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -71,7 +72,11 @@
                 if (!e) e = window.event;
                 var keyCode = e.keyCode || e.which;
                 if (keyCode == '13') {
-                    CreateTag(this.value);
+                    var tagText = this.value.trim();
+                    if (tagText.length > 0) {
+                        CreateTag(this.value);
+                        $("#tag-input").val("");
+                    }
                 }
             }
 
