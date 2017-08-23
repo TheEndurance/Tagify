@@ -52,6 +52,12 @@
 
     </div>
 
+
+    <form id="theForm">
+        <p>The form</p>
+        <button class="btn btn-primary" id="form-button">submit</button>
+    </form>
+
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -144,6 +150,10 @@
         })(jQuery);
         $("#tag").tagify();
         
+        $("#form-button").click(function(e){
+            e.preventDefault();
+            $("#tag").tagify('InsertJsonArrayToForm','theForm','Tags');
+        })
 
     </script>
 </body>
