@@ -94,15 +94,9 @@
 
         //Plugin method to insert serialized JSON array into a hidden field with name of 'Tags' on the form with
         //an id of 'theForm'
-        $("#tag").tagify('InsertJsonArrayToForm', 'theForm', 'Tags');
+        // The 3rd parameter is debug mode, alerts the values in the hidden field before submitting form.
+        $("#tag").tagify('InsertJsonArrayToForm', 'theForm', 'Tags',true);
 
-        /*
-        * Demo purposes
-        */
-        $("#form-button").click(function (e) {
-            e.preventDefault();
-            alert("These values have been placed in the hidden field in the form: "+JSON.parse($("#Tags").val()));
-        })
     </script>
 </body>
 

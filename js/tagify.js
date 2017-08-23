@@ -24,8 +24,8 @@
         /*
         * Returns all of the tags as a JsonArray and appends the values as a hidden field in a form
         */
-        InsertJsonArrayToForm: function (formID, hiddenInputName) {
-            $("#" + formID).on("click", "button:submit", function () {
+        InsertJsonArrayToForm: function (formID, hiddenInputName, debugMode = false) {
+            $("#" + formID).submit(function () {
                 var spanTags = $("#rj-tag-box span.tag");
                 var tagText = [];
 
@@ -43,6 +43,9 @@
                         .attr('id', hiddenInputName)
                         .val(JSONTags);
                     $("#" + formID).append(hiddenInput);
+                }
+                if (debugMode === true) {
+                    alert("The values in the hidden field: " + hiddenInputName + " is: " + $("#" + hiddenInputName).val());
                 }
             })
         }
