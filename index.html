@@ -86,14 +86,27 @@
                 /*
                 * Returns all of the tags as a JsonArray and appends the values as a hidden field in a form
                 */
-                InsertJsonArrayToForm: function (formID,hiddenInputName) {
-                    var spanTags = $("#tag-box span.tag");
-                    var tagText = [];
-                    for (var i=0;i<spanTags.length;i++){
-                        tagText.push($(spanTags).eq(i).text());
-                    }
-                    var hiddenInput = $('<input type="hidden" name="'+hiddenInputName+'">').val(JSON.stringify(tagText));
-                    $("#"+formID).append(hiddenInput);
+                InsertJsonArrayToForm: function (formID, hiddenInputName) {
+                    $("#" + formID).on("click","button:submit", function () {
+                        var spanTags = $("#tag-box span.tag");
+                        var tagText = [];
+
+                        for (var i = 0; i < spanTags.length; i++) {
+                            tagText.push($(spanTags).eq(i).text());
+                        }
+                        var JSONTags = JSON.stringify(tagText);
+
+                        if (document.getElementById(hiddenInputName)) {
+                            $("#" + hiddenInputName).val(JSONTags);
+                        } else {
+                            var hiddenInput = $('<input />')
+                                .attr('type', 'hidden')
+                                .attr('name', hiddenInputName)
+                                .attr('id', hiddenInputName)
+                                .val(JSONTags);
+                            $("#" + formID).append(hiddenInput);
+                        }
+                    })
                 }
             }
 
@@ -149,12 +162,12 @@
 
         })(jQuery);
         $("#tag").tagify();
-        
-        $("#form-button").click(function(e){
-            e.preventDefault();
-            $("#tag").tagify('InsertJsonArrayToForm','theForm','Tags');
-        })
+        $("#tag").tagify('InsertJsonArrayToForm', 'theForm', 'Tags');
 
+        $("#form-button").click(function (e) {
+            e.preventDefault();
+
+        })
     </script>
 </body>
 
