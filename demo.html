@@ -1,39 +1,107 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags always come first -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/tagify.css">
 </head>
 
 <body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Tagify - Blog tagging jQuery plugin</h1>
+            <p>Type in text into the input field below and hit the enter key to create the tag.</p>
+            <div class="alert alert-dismissible alert-info">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Heads up!</strong> When you hit submit on the example form below, an alert will pop up showing the
+                hidden values appended to the form by the plugin.
+            </div>
+            <p>
+                <a href="#tag" class="btn btn-primary btn-md">Lets go!</a>
+            </p>
+        </div>
+    </div>
+
     <div class="container">
+
+        <!-- Plugin will initialize on this element -->
         <div id="tag">
 
         </div>
+
+        <!-- FORM -->
+        <form id="theForm" class="form-horizontal">
+            <fieldset>
+                <legend>Example generic form</legend>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                    <div class="col-lg-10">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Checkbox
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="3" id="textArea"></textarea>
+                        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Radios</label>
+                    <div class="col-lg-10">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                                Option one is this
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                Option two can be something else
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="form-button" type="submit" class="btn btn-primary">Submit</button>
+                
+        </form>
     </div>
-    <form id="theForm">
-        <legend>Example form</legend>
-        <button type="submit" class="btn btn-primary" id="form-button">submit</button>
-    </form>
 
 
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/tagify.js"></script>
     <script>
+        // Initialization of plugin
         $("#tag").tagify();
+
+        //Plugin method to insert serialized JSON array into a hidden field with name of 'Tags' on the form with
+        //an id of 'theForm'
         $("#tag").tagify('InsertJsonArrayToForm', 'theForm', 'Tags');
 
+        /*
+        * Demo purposes
+        */
         $("#form-button").click(function (e) {
             e.preventDefault();
-
+            alert("These values have been placed in the hidden field in the form: "+JSON.parse($("#Tags").val()));
         })
     </script>
 </body>
