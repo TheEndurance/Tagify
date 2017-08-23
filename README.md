@@ -10,7 +10,7 @@ jQuery plugin for creating blog tags.  The plugin creates an input field and an 
 ## Installation
 Download both tagify.css and tagify.js and place them in your project folder.  Place tagify.js in a script tag below jQuery script tag.
 
-This plugin requires font-awesome.
+This plugin requires font-awesome css and bootstrap 3.3.7 css.
 
 ## Usage
 HTML:
