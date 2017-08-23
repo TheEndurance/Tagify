@@ -80,8 +80,14 @@
                 /*
                 * Returns all of the tags as a JsonArray and appends the values as a hidden field in a form
                 */
-                InsertJsonArrayToForm: function (formName) {
-                    
+                InsertJsonArrayToForm: function (formID,hiddenInputName) {
+                    var spanTags = $("#tag-box span.tag");
+                    var tagText = [];
+                    for (var i=0;i<spanTags.length;i++){
+                        tagText.push($(spanTags).eq(i).text());
+                    }
+                    var hiddenInput = $('<input type="hidden" name="'+hiddenInputName+'">').val(JSON.stringify(tagText));
+                    $("#"+formID).append(hiddenInput);
                 }
             }
 
@@ -103,13 +109,12 @@
                 * input as a parameter
                 */
                 document.getElementById("tag-input").onkeypress = function (e) {
-                    console.log(e);
                     if (!e) e = window.event;
                     var keyCode = e.keyCode || e.which;
                     if (keyCode == '13') {
                         var tagText = this.value.trim();
                         if (tagText.length > 0) {
-                            CreateTag(this.value);
+                            CreateTag(tagText);
                             $("#tag-input").val("");
                         }
                     }
@@ -137,9 +142,9 @@
             }
 
         })(jQuery);
-
-
         $("#tag").tagify();
+        
+
     </script>
 </body>
 
