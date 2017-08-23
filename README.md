@@ -1,4 +1,4 @@
-# blog-tag-it
+# Tagify - jQuery blog tag plugin
 
 ## Description
 jQuery plugin for creating blog tags.  The plugin creates an input field and an area where the tags will accumulate as they are typed in, and 'enter' key is pressed.
