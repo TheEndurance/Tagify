@@ -43,9 +43,9 @@
                 */
                 Init: function () {
                     var input = $(
-                        '<label for="tag-input">Create Tags: <input type="text" class="form-control" id="tag-input" name="tag-input"></label>'
+                        '<label for="rj-tag-input">Create Tags: <input type="text" class="form-control" id="rj-tag-input"></label>'
                     );
-                    var tagBox = $('<div class="container" id="tag-box"></div>');
+                    var tagBox = $('<div id="rj-tag-box"></div>');
                     $(this).append(input);
                     $(this).append(tagBox);
                 },
@@ -54,7 +54,7 @@
                 */
                 InsertJsonArrayToForm: function (formID, hiddenInputName) {
                     $("#" + formID).on("click", "button:submit", function () {
-                        var spanTags = $("#tag-box span.tag");
+                        var spanTags = $("#rj-tag-box span.tag");
                         var tagText = [];
 
                         for (var i = 0; i < spanTags.length; i++) {
@@ -93,14 +93,14 @@
                 * When user presses enter on the input, it will trigger 'CreateTag' function and send the value of the
                 * input as a parameter
                 */
-                document.getElementById("tag-input").onkeypress = function (e) {
+                document.getElementById("rj-tag-input").onkeypress = function (e) {
                     if (!e) e = window.event;
                     var keyCode = e.keyCode || e.which;
                     if (keyCode == '13') {
                         var tagText = this.value.trim();
                         if (tagText.length > 0) {
                             CreateTag(tagText);
-                            $("#tag-input").val("");
+                            $("#rj-tag-input").val("");
                         }
                     }
                 }
@@ -112,16 +112,16 @@
                     var newTag = $('<span />').addClass("label label-primary tag").append($(
                         '<span />').html(text));
                     var removeButton = $(
-                        '<a class="js-tag-delete"><i class="fa fa-times fa-1" aria-hidden="true"></i></a>'
+                        '<a class="rj-js-tag-delete"><i class="fa fa-times fa-1" aria-hidden="true"></i></a>'
                     );
                     $(newTag).append(removeButton);
-                    $("#tag-box").append(newTag);
+                    $("#rj-tag-box").append(newTag);
                 }
 
                 /*
                 * Delete tag
                 */
-                $("#tag").on("click", "a.js-tag-delete", function () {
+                $(this).on("click", "a.rj-js-tag-delete", function () {
                     $(this).parents(".tag").first().remove();
                 })
             }

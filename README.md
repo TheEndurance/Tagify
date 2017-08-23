@@ -28,7 +28,7 @@ To initialize the plugin use jQuery selector on the container created above and 
     $("#my-container").tagify();
 ```
 
-The plugin has the the function InsertJsonArrayToForm that will take all of the tags created and turn it into a serialized JSON array.  Then it will create a hidden input field with the serialized JSON array values and append it to the form. ** ONLY upon submitting the form will this occur.
+The plugin provides the function InsertJsonArrayToForm that will take all of the tags created and turn it into a serialized JSON array.  Then it will create a hidden input field with the serialized JSON array values and append it to the form. ** ONLY upon submitting the form will this occur.
 
 The function takes in 2 parameters: (1) The Id of the Form html element, (2) The 'name' attribute of the hidden input field. 
 
