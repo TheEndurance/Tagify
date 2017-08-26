@@ -15,7 +15,7 @@
         */
         Init: function () {
             var input = $(
-                '<label for="rj-tag-input" class="control-label">Create Tags: <input type="text" class="form-control" id="rj-tag-input"></label>'
+                '<input type="text" class="form-control" id="rj-tag-input">'
             );
             var tagBox = $('<div id="rj-tag-box"></div>');
             $(this).append(input);
