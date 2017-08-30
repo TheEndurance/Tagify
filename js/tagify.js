@@ -33,7 +33,6 @@
         InsertJsonArrayToForm: function (formID, debugMode = false) {
             $("#" + formID).submit(function () {
                 var hiddenInputName = defaults["hiddenInputName"];
-                alert(hiddenInputName);
                 var spanTags = $("#rj-tag-box span.tag");
                 var tagText = [];
 
@@ -71,18 +70,19 @@
         } else if (typeof methodOrOptions === 'object' || !methodOrOptions) {
             // Default to "init"
             methods.Init.apply(this,arguments);
+            /*
+            * If the hidden input exists already, and has values, initialize the tags
+            */
+            if (document.getElementById("Tags")) {
+                var tags = JSON.parse($("#Tags").val());
+                for (var i = 0; i < tags.length; i++) {
+                    CreateTag(tags[i]);
+                }
+            }
         } else {
             $.error('Method ' + methodOrOptions + ' does not exist on jQuery.tagify');
         }
-        /*
-        * If the hidden input exists already, and has values, initialize the tags
-        */
-        if (document.getElementById("Tags")) {
-            var tags = JSON.parse($("#Tags").val());
-            for (var i = 0; i < tags.length; i++) {
-                CreateTag(tags[i]);
-            }
-        }
+        
         /*
         * When user presses space on the input, it will trigger 'CreateTag' function and send the value of the
         * input as a parameter
