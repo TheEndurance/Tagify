@@ -90,12 +90,16 @@
     <script src="js/tagify.js"></script>
     <script>
         // Initialization of plugin
-        $("#tag").tagify();
+        
+     
+        $("#tag").tagify({
+            hiddenInputName: "Lepricon"
+        });
 
         //Plugin method to insert serialized JSON array into a hidden field with name of 'Tags' on the form with
         //an id of 'theForm'
         // The 3rd parameter is debug mode, alerts the values in the hidden field before submitting form.
-        $("#tag").tagify('InsertJsonArrayToForm', 'theForm', 'Tags',true);
+        $("#tag").tagify('InsertJsonArrayToForm', 'theForm',true);
 
     </script>
 </body>
