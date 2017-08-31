@@ -28,10 +28,12 @@ To initialize the plugin use jQuery selector on the container created above and 
     $("#my-container").tagify();
 ```
 
-Default options:
+Options:
 
-hiddenInputName : "Tags" (string)  (The hidden input field the plugin creates will have a name/id of Tags)
-allowInput : true (boolean) (If true, turns on the input area where you can enter in new tags and the ability to delete tags)
+Option name | Default value | Description
+----------- | ------------- | -----------
+hiddenInputName | "Tags" (string) | Changes the name/id of the hidden input field the plugin creates
+allowInput | true (boolean) |  If true, turns on the input area where you can enter in new tags and the ability to delete tags
 
 Override defaults options using,
 
