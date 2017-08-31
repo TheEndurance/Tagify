@@ -30,7 +30,8 @@ To initialize the plugin use jQuery selector on the container created above and 
 
 Default options:
 
-hiddenInputName : "Tags"   (The hidden input field the plugin creates will have a name/id of Tags)
+hiddenInputName : "Tags" (string)  (The hidden input field the plugin creates will have a name/id of Tags)
+allowInput : true (boolean) (If true, turns on the input area where you can enter in new tags and the ability to delete tags)
 
 Override defaults options using,
 
